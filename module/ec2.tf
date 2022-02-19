@@ -1,7 +1,7 @@
 resource "aws_instance" "web-server" {
   count = 1
   ami = var.ami
-  instance_type = "t2.micro"
+  instance_type = "var.instance-type"
 
   tags  = {
     env = "dev"
