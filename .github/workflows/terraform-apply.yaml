@@ -32,10 +32,13 @@ jobs:
       - name: Terraform plan
         run: terraform plan -out tfplan.binary
         working-directory: ${{ env.working-directory }}
+        env: 
+          TF_VARS_instance-type : ${{secrets.INSTANCE_TYPE}}
 
       - name: Terraform show
         run: terraform show -json tfplan.binary > plan.json
         working-directory: ${{ env.working-directory }}
+        
 
       - name: Setup Infracost
         uses: infracost/actions/setup@v1
